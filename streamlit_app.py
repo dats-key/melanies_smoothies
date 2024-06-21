@@ -31,8 +31,12 @@ if ingredients_list:
     # 変数を作成
     ingredients_string = ''
 
+    # クエリ実行用の変数にフルーツ名を入れる
     for fruits_chosen in ingredients_list:
         ingredients_string += fruits_chosen + ' '
+    # 対象フルーツに対してfruityviceへREST API呼び出し
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     # st.write(ingredients_string)
 
@@ -53,5 +57,4 @@ if ingredients_list:
 # ライブラリ`requests`をインポートし、REST API呼び出しを送信
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-# st.text(fruityvice_response.json())
 fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
