@@ -49,3 +49,8 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered!' + name_on_order, icon="✅")
+
+# ライブラリ`requests`をインポートし、REST API呼び出しを送信
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
