@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+import requests
 from snowflake.snowpark.functions import col
 
 # アプリのタイトルを記載
@@ -54,7 +55,6 @@ if ingredients_list:
 
         st.success('Your Smoothie is ordered!' + name_on_order, icon="✅")
 
-# ライブラリ`requests`をインポートし、REST API呼び出しを送信
-import requests
+# ライブラリ`requests`でREST API呼び出しを送信
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
