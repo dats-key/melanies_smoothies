@@ -44,11 +44,11 @@ if ingredients_list:
 
     # search_on列がある対象のみに絞るクエリを実行
         search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruits_chosen, 'SEARCH_ON'].iloc[0]
-        st.write('The search value for ', fruits_chosen,' is ', search_on, '.')
+        # st.write('The search value for ', fruits_chosen,' is ', search_on, '.')
 
     # 対象フルーツに対してfruityviceへREST API呼び出し
         st.subheader(fruits_chosen + 'Nutrition Information')
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruits_chosen)
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + search_on)
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     # st.write(ingredients_string)
